@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="../public/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body cz-shortcut-listen="true">
+    <div id="login" style="float: left; width: 400px;">
+        <h3> Chào mừng <span style="color: rebeccapurple;">thanhquang !</span></h3>
+    </div>
+    <div id="login" style="float: right;">
+        <h4> <a href="/logout" class="logout">Thoát đăng nhập </a> </h4>
+    </div>
+
+
+    <div class="todo-container">
+        <h2>To-Do List</h2>
+        <div class="todo">
+            <form action="/users" method="POST" class="todo-header">
+                <input type="text" name="content">
+                <button type="submit"><span class="fas fa-plus"></span></button>
+            </form>
+            <ul class="todo-list">
+
+                <li class="todo-list-item" id = "GFG_DOWN1">
+                    <div class="todo-list-item-name">
+                        Học tiếng trung
+                    </div>
+                    <a class="edit" onclick= "editForm(GFG_DOWN1)" idrow="1">
+                        <span class="fas fa-edit"></span>
+                    </a>
+                    <a href="/users/remove/1/1" class="remove">
+                        <span class="fas fa-times"></span>
+                    </a>
+                </li>
+
+                <li class="todo-list-item" id = "GFG_DOWN2">
+                    <div class="todo-list-item-name">
+                        Học JavaScript
+                    </div>
+                    <a class="edit" onclick= "editForm(GFG_DOWN2)"idrow="2">
+                        <span class="fas fa-edit"></span>
+                    </a>
+                    <a href="/users/remove/1/2" class="remove">
+                        <span class="fas fa-times"></span>
+                    </a>
+                </li>
+
+                <li class="todo-list-item" id = "GFG_DOWN3">
+                    <div class="todo-list-item-name">
+                        Phụ nấu trà sữa
+                    </div>
+                    <a class="edit" onclick= "editForm(GFG_DOWN3)" idrow="15">
+                        <span class="fas fa-edit"></span>
+                    </a>
+                    <a href="/users/remove/1/15" class="remove">
+                        <span class="fas fa-times"></span>
+                    </a>
+                </li>
+
+                <li class="todo-list-item" id = "GFG_DOWN4">
+                    <div class="todo-list-item-name">
+                        Tìm hiểu về ngôn ngữ R
+                    </div>
+                    <a class="edit" onclick= "editForm(GFG_DOWN4)" idrow="16">
+                        <span class="fas fa-edit"></span>
+                    </a>
+                    <a href="/users/remove/1/16" class="remove">
+                        <span class="fas fa-times"></span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <script>
+          
+          
+            function editForm(idEdit) {
+                console.log(idEdit.innerText);
+                //var down = document.getElementById(idEdit);
+
+                var txtValue = idEdit.innerText;
+                idEdit.innerHTML = ''
+
+                // Create a form synamically
+                var form = document.createElement("form");
+                form.setAttribute("method", "post");
+                form.setAttribute("action", "submit");
+  
+                // Create an input element for emailID
+                var ID = document.createElement("input");
+                ID.setAttribute("type", "text");
+                ID.setAttribute("name", "emailID");
+                ID.setAttribute("value", txtValue);
+  
+              
+                // Create a submit button
+                var s = document.createElement("button");
+                s.setAttribute("type", "submit");
+                s.setAttribute("onclick","return Todo()")
+                s.setAttribute("value", "Confirm");
+                s.innerHTML = "Confirm"
+                
+                
+                var a = document.createElement("a")
+                a.setAttribute("class","cancel");
+                a.innerHTML = "Cancel"
+
+  
+                // Append the email_ID input to the form
+                form.append(ID); 
+                form.append(s); 
+                form.append(a);
+                
+                idEdit.appendChild(form);
+            }
+            function Todo(){
+                alert("Mầy vừa bấm Confirm đúng không?")
+                alert("Mầy có chắc mầy đang làm đúng không?")
+                alert("Tao không tin mầy, tao không làm gì cả nha. hẹn lần sau!")
+                return false;
+            }
+    </script>
+
+</body>
+
+</html>

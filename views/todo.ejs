@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<div id="login" style="float: left; width: 400px;">
+    <h3> Chào mừng  <span style="color: rebeccapurple;"><%=data[0].UserName%> !</span></h3>    
+</div>
+<div id="login" style="float: right;">
+    <h4> <a href="/logout" class="logout">Thoát đăng nhập </a> </h4> 
+</div>
+
+<body>
+    <div class="todo-container">
+        <h2>To-Do List</h2>
+        <div class="todo">
+            <form action="/users" method="POST" class="todo-header">
+                <input type="text" name="content">
+                <button type="submit"><span class="fas fa-plus"></span></button>
+            </form>
+            <ul class="todo-list">
+                <% data.forEach(function(dat) { %>
+                    <li class="todo-list-item">
+                        <div class="todo-list-item-name">
+                            <%= dat.Task_Name %>
+                        </div>
+                        <a href="/users/edit/<%= dat.UserID %>/<%= dat.Id %>" class="edit" idRow = <%= dat.Id %> >
+                            <span class="fas fa-edit"></span>
+                        </a>
+                        <a href="/users/remove/<%= dat.UserID %>/<%= dat.Id %>" class="remove">
+                            <span class="fas fa-times"></span>
+                        </a>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
+</body>
